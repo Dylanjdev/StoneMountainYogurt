@@ -90,7 +90,7 @@ function HomePage() {
         <article>
           <p className="label">Hours</p>
           <p>Thursday-Sunday</p>
-          <p>12 PM-7 PM</p>
+          <p>12 PM-8 PM</p>
         </article>
       </section>
     </>

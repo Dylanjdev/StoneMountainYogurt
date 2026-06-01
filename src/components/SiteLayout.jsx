@@ -21,7 +21,7 @@ function SiteLayout() {
       </div>
 
       <header className="ticker">
-        <p>OPEN NOW • WINTER HOURS • THU-SUN 12 PM-7 PM • 124 MAIN ST, PENNINGTON GAP</p>
+        <p>OPEN NOW • WINTER HOURS • THU-SUN 12 PM-8 PM • 124 MAIN ST, PENNINGTON GAP</p>
       </header>
 
       <div className="frame-wrap">
@@ -88,7 +88,13 @@ function SiteLayout() {
               <a href="tel:2762952302">276-295-2302</a> •{' '}
               <a href="mailto:StoneMountainYogurt@gmail.com">StoneMountainYogurt@gmail.com</a>
             </p>
-            <p>Thu-Sun 12 PM-7 PM</p>
+            <p>Thu-Sun 12 PM-8 PM</p>
+            <p>
+              <NavLink to="/privacy-policy" className="inline-link">Privacy Policy</NavLink>
+            </p>
+            <p>
+              <NavLink to="/terms-and-conditions" className="inline-link">Terms & Conditions</NavLink>
+            </p>
             <p>
               Built By Smith Digitals •{' '}
               <a href="https://smithdigitals.com" target="_blank" rel="noreferrer">

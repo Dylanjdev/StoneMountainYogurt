@@ -34,7 +34,7 @@ function ContactPage() {
         <article className="stack-card">
           <h3>Hours</h3>
           <p>Thursday-Sunday</p>
-          <p>12 PM-7 PM</p>
+          <p>12 PM-8 PM</p>
         </article>
       </div>
     </section>

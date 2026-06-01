@@ -17,6 +17,7 @@ export const toppings = {
     'Rainbow Sprinkles',
     'Oreo',
     'Gummi Bears',
+    'Brownie Bites',
     'Cheesecake Bites',
     'Cookie Dough Bites',
   ],
@@ -84,11 +85,6 @@ export const menuCards = [
     price: '$6.25',
     details: ['20 oz', 'Add-on flavors cost extra'],
     flavors: ['Caramel', 'Salted Caramel', 'Mocha', 'Vanilla Bean', 'White Chocolate'],
-  },
-  {
-    title: 'Hot Cocoa',
-    price: '$2.00',
-    details: ['12 oz', 'Winter months only'],
   },
   {
     title: 'Waffle Nachos',
