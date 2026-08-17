@@ -9,26 +9,41 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#f4f1e8" />
+    <meta name="theme-color" content="#151914" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Stone Mountain Yogurt in Pennington Gap, VA serves frozen yogurt, shakes, and sweet drinks with bold flavors and local energy." />
-    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Visit Stone Mountain Yogurt at 124 Main Street in Pennington Gap, VA for frozen yogurt, shakes, sundaes, smoothies, floats, and more." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="author" content="Stone Mountain Yogurt" />
     <link rel="canonical" href="https://stone-mountain-yogurt.com/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Stone Mountain Yogurt" />
-    <meta property="og:title" content="Stone Mountain Yogurt" />
-    <meta property="og:description" content="Frozen yogurt, shakes, and sweet drinks in downtown Pennington Gap, Virginia." />
+    <meta property="og:title" content="Frozen Yogurt in Pennington Gap | Stone Mountain Yogurt" />
+    <meta property="og:description" content="Visit Stone Mountain Yogurt at 124 Main Street in Pennington Gap, VA for frozen yogurt, shakes, sundaes, smoothies, floats, and more." />
     <meta property="og:url" content="https://stone-mountain-yogurt.com/" />
     <meta property="og:image" content="https://stone-mountain-yogurt.com/StoneOG.webp" />
     <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1981" />
+    <meta property="og:image:height" content="2048" />
+    <meta property="og:image:alt" content="Two frozen yogurt cones beneath the Stone Mountain Yogurt sign" />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Stone Mountain Yogurt" />
-    <meta name="twitter:description" content="Frozen yogurt, shakes, and sweet drinks in downtown Pennington Gap, Virginia." />
+    <meta name="twitter:title" content="Frozen Yogurt in Pennington Gap | Stone Mountain Yogurt" />
+    <meta name="twitter:description" content="Visit Stone Mountain Yogurt at 124 Main Street in Pennington Gap, VA for frozen yogurt, shakes, sundaes, smoothies, floats, and more." />
     <meta name="twitter:image" content="https://stone-mountain-yogurt.com/StoneOG.webp" />
+    <meta name="twitter:image:alt" content="Two frozen yogurt cones beneath the Stone Mountain Yogurt sign" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8FLR199H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-2Z8FLR199H', { send_page_view: false })
+    </script>
 
     <script>
       // Restores clean SPA paths after GitHub Pages serves 404.html redirects.
@@ -51,11 +66,21 @@
       {
         "@context": "https://schema.org",
         "@type": "IceCreamShop",
+        "@id": "https://stone-mountain-yogurt.com/#business",
         "name": "Stone Mountain Yogurt",
+        "description": "Frozen yogurt, shakes, sundaes, smoothies, floats, and desserts in downtown Pennington Gap, Virginia.",
         "url": "https://stone-mountain-yogurt.com/",
         "image": "https://stone-mountain-yogurt.com/StoneOG.webp",
+        "logo": "https://stone-mountain-yogurt.com/android-chrome-512x512.png",
         "telephone": "+1-276-295-2302",
         "email": "StoneMountainYogurt@gmail.com",
+        "priceRange": "$",
+        "menu": "https://stone-mountain-yogurt.com/menu/",
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=124+Main+St+Pennington+Gap+VA+24277",
+        "sameAs": [
+          "https://www.facebook.com/stonemountainyogurt",
+          "https://www.tiktok.com/@stonemountainyogurt"
+        ],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "124 Main St",
@@ -64,15 +89,22 @@
           "postalCode": "24277",
           "addressCountry": "US"
         },
-        "openingHours": [
-          "Th 12:00-19:00",
-          "Fr 12:00-19:00",
-          "Sa 12:00-19:00",
-          "Su 12:00-19:00"
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "https://schema.org/Thursday",
+              "https://schema.org/Friday",
+              "https://schema.org/Saturday",
+              "https://schema.org/Sunday"
+            ],
+            "opens": "12:00",
+            "closes": "20:00"
+          }
         ]
       }
     </script>
-    <title>Stone Mountain Yogurt</title>
+    <title>Frozen Yogurt in Pennington Gap | Stone Mountain Yogurt</title>
   </head>
   <body>
     <div id="root"></div>

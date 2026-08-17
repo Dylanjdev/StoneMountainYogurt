@@ -8,34 +8,40 @@ import smoothie7 from '../assets/Smoothie7.webp'
 import smoothie8 from '../assets/Smoothie8.webp'
 
 const galleryItems = [
-  { src: smoothie1, title: 'Smoothie 1' },
-  { src: smoothie2, title: 'Smoothie 2' },
-  { src: smoothie3, title: 'Smoothie 3' },
-  { src: smoothie4, title: 'Smoothie 4' },
-  { src: smoothie5, title: 'Smoothie 5' },
-  { src: smoothie6, title: 'Smoothie 6' },
-  { src: smoothie7, title: 'Smoothie 7' },
-  { src: smoothie8, title: 'Smoothie 8' },
+  { src: smoothie1, title: 'Berry-loaded parfait', note: 'Layers on layers' },
+  { src: smoothie2, title: 'Blended & topped', note: 'Sip happy' },
+  { src: smoothie3, title: 'Cool refresher', note: 'Bright and breezy' },
+  { src: smoothie4, title: 'Chocolate sundaes', note: 'A timeless duo' },
+  { src: smoothie5, title: 'Chocolate parfait', note: 'Brownie bliss' },
+  { src: smoothie6, title: 'Cookies & cream', note: 'Crunch in every bite' },
+  { src: smoothie7, title: 'Waffle nachos', note: 'Built for dipping' },
+  { src: smoothie8, title: 'Caramel crunch', note: 'Sweet meets salty' },
 ]
 
 function GalleryPage() {
   return (
-    <section className="gallery-page" aria-label="Stone Mountain Yogurt gallery">
-      <header className="page-heading-block">
-        <p className="eyebrow">Gallery</p>
-        <h2>Flavor snapshots from the shop.</h2>
-        <p>
-          Bright cups, creamy blends, and colorful swirls from Stone Mountain Yogurt.
-        </p>
+    <section className="gallery-page" aria-labelledby="gallery-title">
+      <header className="page-hero gallery-hero">
+        <div>
+          <p className="eyebrow">From our counter</p>
+          <h1 id="gallery-title">Looks good.<br /><em>Tastes better.</em></h1>
+        </div>
+        <p className="page-hero-note">Bright cups, creamy blends, and colorful creations made right here in Pennington Gap.</p>
       </header>
 
-      <div className="gallery-montage">
+      <div className="gallery-grid section-wrap">
         {galleryItems.map((item, index) => (
-          <figure key={item.title} className={`gallery-card tone-${(index % 4) + 1}`}>
+          <figure key={item.title} className={`gallery-card gallery-card-${index + 1}`}>
             <img src={item.src} alt={item.title} className="gallery-image" loading="lazy" />
+            <figcaption><span>{item.title}</span><small>{item.note}</small></figcaption>
           </figure>
         ))}
       </div>
+
+      <section className="gallery-cta section-wrap">
+        <p>See the newest specials and creations as they happen.</p>
+        <a className="button button-primary" href="https://www.facebook.com/stonemountainyogurt" target="_blank" rel="noreferrer">Follow on Facebook <span aria-hidden="true">↗</span></a>
+      </section>
     </section>
   )
 }

@@ -1,97 +1,161 @@
 import { Link } from 'react-router-dom'
+import bananaSplit from '../assets/Split.webp'
+import smoothie1 from '../assets/Smoothie1.webp'
+import smoothie4 from '../assets/Smoothie4.webp'
+import smoothie7 from '../assets/Smoothie7.webp'
+import stoneHero from '../assets/StoneOG.webp'
 import storeFront from '../assets/StoreFront.webp'
-import stoneLogo from '../assets/StoneLogo.webp'
 
-const spotlightItems = [
+const treats = [
   {
-    id: 'swirl',
-    title: 'Swirl Bar',
-    text: 'Mix flavors, layer toppings, and build your own cup exactly how you want it.',
+    number: '01',
+    title: 'Pick a base',
+    text: 'Cup, cone, parfait, sundae—or skip straight to a shake.',
   },
   {
-    id: 'sips',
-    title: 'Sip Menu',
-    text: 'Frappes, smoothies, floats, and refreshers built for weekend walks downtown.',
+    number: '02',
+    title: 'Load it up',
+    text: 'Fruit, candy, crunch, hot fudge, caramel. You know the drill.',
   },
   {
-    id: 'community',
-    title: 'Community Spot',
-    text: 'A bright stop for families, students, and anyone craving something sweet and cold.',
+    number: '03',
+    title: 'Take the first bite',
+    text: 'Find a table inside or carry it down Main Street.',
   },
 ]
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <path d="M5 15 15 5M7 5h8v8" />
+    </svg>
+  )
+}
 
 function HomePage() {
   return (
     <>
-      <section className="hero-stage" aria-label="Stone Mountain Yogurt welcome section">
-        <div className="hero-copy-panel">
-          <p className="eyebrow">Pennington Gap, Virginia</p>
-          <h2>Frozen yogurt with loud flavor and small-town energy.</h2>
-          <p className="hero-support">
-            From classic swirls to candy-loaded creations, Stone Mountain Yogurt is your quick
-            stop for dessert, coffee-inspired drinks, and weekend treats.
+      <section className="home-hero" aria-labelledby="home-title">
+        <div className="hero-copy">
+          <p className="eyebrow"><span /> 124 Main Street · Pennington Gap</p>
+          <h1 id="home-title">Frozen yogurt.<br /><em>Right on Main.</em></h1>
+          <p className="hero-lede">
+            Find the bright green storefront, choose your swirl, then make it yours. We do
+            cups, sundaes, shakes, smoothies, floats—and one glorious banana split.
           </p>
-          <div className="hero-cta-row">
-            <Link to="/menu" className="action-btn solid">Explore Menu</Link>
-            <Link to="/text-club" className="action-btn outline">Join Text Club</Link>
+          <div className="button-row">
+            <Link to="/menu/" className="button button-primary">See the menu <ArrowIcon /></Link>
+            <a href="tel:2762952302" className="button button-text">Call 276-295-2302</a>
           </div>
+          <dl className="hero-details">
+            <div><dt>Open</dt><dd>Thu—Sun</dd></div>
+            <div><dt>Hours</dt><dd>12pm—8pm</dd></div>
+            <div><dt>Find us</dt><dd>124 Main St</dd></div>
+          </dl>
         </div>
 
-        <div className="hero-visual-panel">
-          <img src={stoneLogo} className="stone-logo" alt="Stone Mountain Yogurt logo" />
-          <div className="metric-strip" role="presentation">
-            <p>
-              <span>30+</span> milkshake flavors
-            </p>
-            <p>
-              <span>4</span> days a week open
-            </p>
-            <p>
-              <span>1</span> local favorite stop
-            </p>
+        <div className="hero-media">
+          <img src={stoneHero} alt="Two colorful frozen yogurt cones at Stone Mountain Yogurt" />
+          <div className="hero-sticker" aria-hidden="true">
+            <span>Open</span>
+            <strong>12—8</strong>
+            <span>Thu—Sun</span>
+          </div>
+          <div className="hero-note">
+            <span className="hero-note-icon">✦</span>
+            <p><strong>Small cup / $3.95</strong><br />First topping is on us.</p>
           </div>
         </div>
       </section>
 
-      <section className="storefront-ribbon" aria-label="Front of Stone Mountain Yogurt store">
-        <div className="storefront-copy">
-          <p className="eyebrow">Visit The Shop</p>
-          <h3>Main Street storefront. Big color. Better dessert.</h3>
+      <section className="intro-section section-wrap" aria-labelledby="pick-title">
+        <div className="section-heading split-heading">
+          <div>
+            <p className="eyebrow">How it works</p>
+            <h2 id="pick-title">Order it like you mean it.</h2>
+          </div>
+          <p>No preset formula. Start simple, pile it high, or ask us what’s good today.</p>
+        </div>
+
+        <div className="treat-grid">
+          {treats.map((item) => (
+            <article key={item.number} className="treat-card">
+              <span className="treat-number">{item.number}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <div className="flavor-ribbon" aria-label="Popular menu categories">
+        <div>
+          <span>Frozen yogurt</span><i>✦</i><span>Milkshakes</span><i>✦</i><span>Sundaes</span><i>✦</i>
+          <span>Fruit smoothies</span><i>✦</i><span>Waffle nachos</span><i>✦</i><span>Banana splits</span><i>✦</i>
+        </div>
+      </div>
+
+      <section className="split-feature section-wrap" aria-labelledby="split-title">
+        <div className="split-photo">
+          <img src={bananaSplit} alt="A loaded banana split with yogurt, fruit, whipped cream, and chocolate drizzle" loading="lazy" />
+          <span className="photo-caption">One glorious classic</span>
+        </div>
+        <div className="split-copy">
+          <p className="eyebrow">Banana split · $7.50</p>
+          <h2 id="split-title">Three swirls. The whole works.</h2>
           <p>
-            We are in the center of downtown Pennington Gap, serving frozen yogurt, shakes,
-            parfaits, and sweet add-ons all day.
+            Three yogurt flavors, strawberries, pineapple, hot fudge or caramel, nuts,
+            whipped topping, and the cherry on top.
           </p>
-          <Link to="/contact" className="inline-link">See Contact + Hours</Link>
-        </div>
-        <div className="storefront-image-wrap">
-          <img src={storeFront} className="storefront-image" alt="Front of Stone Mountain Yogurt store" />
+          <div className="price-line"><span>Banana split</span><strong>$7.50</strong></div>
+          <Link to="/menu/" className="button button-dark">Explore every treat <ArrowIcon /></Link>
         </div>
       </section>
 
-      <section className="spotlight-grid" aria-label="Stone Mountain Yogurt highlights">
-        {spotlightItems.map((item) => (
-          <article key={item.id} id={item.id} className="spotlight-card">
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </article>
-        ))}
+      <section className="favorites-section section-wrap" aria-labelledby="favorites-title">
+        <div className="section-heading">
+            <p className="eyebrow">Counter roll · Frames 001—003</p>
+          <h2 id="favorites-title">From behind the counter.</h2>
+        </div>
+        <div className="favorites-grid">
+          <figure className="favorite-card favorite-tall">
+            <img src={smoothie1} alt="Layered frozen yogurt parfait with strawberries and chocolate chips" loading="lazy" />
+            <figcaption><span>Layered parfaits</span><small>Fruit · crunch · swirls</small></figcaption>
+          </figure>
+          <figure className="favorite-card">
+            <img src={smoothie4} alt="Two chocolate sundaes topped with whipped cream and cherries" loading="lazy" />
+            <figcaption><span>Classic sundaes</span><small>Made to make your day</small></figcaption>
+          </figure>
+          <figure className="favorite-card">
+            <img src={smoothie7} alt="Waffle nachos with frozen yogurt and caramel drizzle" loading="lazy" />
+            <figcaption><span>Waffle nachos</span><small>Dip, crunch, repeat</small></figcaption>
+          </figure>
+        </div>
+        <Link to="/gallery/" className="circle-link" aria-label="View the full gallery"><span>See all<br />the sweets</span><ArrowIcon /></Link>
       </section>
 
-      <section className="contact-band" id="contact" aria-label="Contact details">
-        <article>
-          <p className="label">Phone</p>
-          <p className="value">276-295-2302</p>
-        </article>
-        <article>
-          <p className="label">Address</p>
-          <p>124 Main St</p>
-          <p>Pennington Gap, VA 24277</p>
-        </article>
-        <article>
-          <p className="label">Hours</p>
-          <p>Thursday-Sunday</p>
-          <p>12 PM-8 PM</p>
-        </article>
+      <section className="visit-section" aria-labelledby="visit-title">
+        <div className="visit-photo">
+          <img src={storeFront} alt="The green Stone Mountain Yogurt storefront on Main Street" loading="lazy" />
+        </div>
+        <div className="visit-copy">
+          <p className="eyebrow light">The green storefront</p>
+          <h2 id="visit-title">124 Main Street. You can’t miss it.</h2>
+          <p>Look for the green brick, orange tables, and frozen yogurt sign in downtown Pennington Gap.</p>
+          <address>124 Main Street<br />Pennington Gap, Virginia</address>
+          <div className="button-row">
+            <a className="button button-lime" href="https://maps.google.com/?q=124+Main+St+Pennington+Gap+VA+24277" target="_blank" rel="noreferrer">Get directions <ArrowIcon /></a>
+            <Link className="button button-text-light" to="/contact/">Hours & contact</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="closing-cta section-wrap" aria-label="Menu call to action">
+        <p className="eyebrow">Thursday—Sunday · 12pm—8pm</p>
+        <h2>See you on Main Street.</h2>
+        <Link to="/menu/" className="button button-primary">Read the menu <ArrowIcon /></Link>
       </section>
     </>
   )

@@ -1,130 +1,124 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import stoneLogo from '../assets/StoneLogo.webp'
+import Seo from './Seo'
 
 const navItems = [
   { label: 'Home', to: '/' },
-  { label: 'Menu', to: '/menu' },
-  { label: 'Gallery', to: '/gallery' },
-  { label: 'Social Media', to: '/social' },
-  { label: 'Text Club', to: '/text-club' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'Menu', to: '/menu/' },
+  { label: 'Gallery', to: '/gallery/' },
+  { label: 'Social', to: '/social/' },
+  { label: 'Visit', to: '/contact/' },
 ]
 
-function SiteLayout() {
+function ArrowIcon() {
   return (
-    <div className="site-shell" id="home">
-      <div className="ambient-bg" aria-hidden="true">
-        <span className="orb orb-a" />
-        <span className="orb orb-b" />
-        <span className="orb orb-c" />
-        <span className="grid-wash" />
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <path d="M5 15 15 5M7 5h8v8" />
+    </svg>
+  )
+}
+
+function SiteLayout() {
+  const [isNavOpen, setIsNavOpen] = useState(false)
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [pathname])
+
+  return (
+    <div className="site-shell">
+      <Seo />
+      <a className="skip-link" href="#main-content">Skip to content</a>
+
+      <div className="announcement-bar">
+        <div className="announcement-inner">
+          <p><span className="status-dot" />Serving Thursday—Sunday, 12pm—8pm</p>
+          <p className="announcement-address">124 Main St · Pennington Gap, VA</p>
+        </div>
       </div>
 
-      <header className="ticker">
-        <p>OPEN NOW • WINTER HOURS • THU-SUN 12 PM-8 PM • 124 MAIN ST, PENNINGTON GAP</p>
-      </header>
+      <header className="site-header">
+        <div className="header-inner">
+          <Link to="/" className="site-brand" aria-label="Stone Mountain Yogurt home">
+            <img src={stoneLogo} alt="Stone Mountain Yogurt" />
+          </Link>
 
-      <div className="frame-wrap">
-        <div className="masthead">
-          <div className="brand-block">
-            <img src={stoneLogo} className="brand-mini-logo" alt="Stone Mountain Yogurt logo" />
-            <div>
-              <p className="eyebrow">Stone Mountain Yogurt</p>
-              <h1 className="brand-wordmark">Frozen. Bright. Local.</h1>
-            </div>
-          </div>
-
-          <div className="masthead-actions">
-            <a href="tel:2762952302" className="call-pill" aria-label="Call Stone Mountain Yogurt">
-              Call 276-295-2302
-            </a>
-            <a
-              href="https://maps.google.com/?q=124+Main+St+Pennington+Gap+VA+24277"
-              className="ghost-pill"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Get Directions
-            </a>
-          </div>
-        </div>
-
-        <nav className="main-nav" aria-label="Primary navigation">
-        {navItems.map((item) => {
-          if (item.to) {
-            return (
+          <nav id="primary-navigation" className={`main-nav${isNavOpen ? ' open' : ''}`} aria-label="Primary navigation">
+            {navItems.map((item, index) => (
               <NavLink
                 key={item.label}
                 to={item.to}
                 className={({ isActive }) => `nav-link${isActive ? ' nav-link-active' : ''}`}
                 end={item.to === '/'}
+                onClick={() => setIsNavOpen(false)}
               >
-                {item.label}
+                <span aria-hidden="true">0{index + 1}</span>{item.label}
               </NavLink>
-            )
-          }
+            ))}
+          </nav>
 
-          return (
-            <a key={item.label} href={item.href} className="nav-link">
-              {item.label}
-            </a>
-          )
-        })}
-        </nav>
+          <a
+            className="header-cta"
+            href="https://maps.google.com/?q=124+Main+St+Pennington+Gap+VA+24277"
+            target="_blank"
+            rel="noreferrer"
+          >
+            124 Main / directions <ArrowIcon />
+          </a>
 
-        <main>
-          <Outlet />
-        </main>
+          <button
+            type="button"
+            className={`mobile-menu-toggle${isNavOpen ? ' active' : ''}`}
+            aria-controls="primary-navigation"
+            aria-expanded={isNavOpen}
+            aria-label={isNavOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            onClick={() => setIsNavOpen((open) => !open)}
+          >
+            <span />
+            <span />
+          </button>
+        </div>
+      </header>
 
-        <footer className="site-footer">
+      <main id="main-content" className="page-main">
+        <Outlet />
+      </main>
+
+      <footer className="site-footer">
+        <div className="footer-inner">
           <section className="footer-branding">
-            <p className="footer-kicker">STONE MOUNTAIN YOGURT</p>
-            <p className="footer-title">Main Street flavor lab for frozen yogurt and sweet drinks.</p>
+            <img src={stoneLogo} alt="Stone Mountain Yogurt" />
+            <p>Bright green storefront. Big frozen-yogurt energy. Right in the middle of Main Street.</p>
           </section>
 
-          <section className="footer-details">
-            <p>124 Main St, Pennington Gap, VA 24277</p>
-            <p>
-              <a href="tel:2762952302">276-295-2302</a> •{' '}
-              <a href="mailto:StoneMountainYogurt@gmail.com">StoneMountainYogurt@gmail.com</a>
-            </p>
-            <p>Thu-Sun 12 PM-8 PM</p>
-            <p>
-              <NavLink to="/privacy-policy" className="inline-link">Privacy Policy</NavLink>
-            </p>
-            <p>
-              <NavLink to="/terms-and-conditions" className="inline-link">Terms & Conditions</NavLink>
-            </p>
-            <p>
-              Built By Smith Digitals •{' '}
-              <a href="https://smithdigitals.com" target="_blank" rel="noreferrer">
-                smithdigitals.com
-              </a>
-            </p>
+          <section className="footer-nav" aria-label="Footer navigation">
+            <p className="footer-label">Explore</p>
+            {navItems.slice(1).map((item) => <Link key={item.label} to={item.to}>{item.label}</Link>)}
           </section>
 
-          <div className="footer-social-links">
-            <a
-              href="https://www.facebook.com/stonemountainyogurt"
-              target="_blank"
-              rel="noreferrer"
-              className="social-foot-link"
-              aria-label="Open Stone Mountain Yogurt Facebook page"
-            >
-              Facebook
-            </a>
-            <a
-              href="https://www.tiktok.com/@stonemountainyogurt"
-              target="_blank"
-              rel="noreferrer"
-              className="social-foot-link"
-              aria-label="Open Stone Mountain Yogurt TikTok page"
-            >
-              TikTok
-            </a>
-          </div>
-        </footer>
-      </div>
+          <section className="footer-visit">
+            <p className="footer-label">Come say hello</p>
+            <address>124 Main St<br />Pennington Gap, VA 24277</address>
+            <p>Thursday—Sunday<br />12pm—8pm</p>
+          </section>
+
+          <section className="footer-contact">
+            <p className="footer-label">Stay in touch</p>
+            <a href="tel:2762952302">276-295-2302</a>
+            <a href="mailto:StoneMountainYogurt@gmail.com">Email the shop</a>
+            <div className="footer-socials">
+              <a href="https://www.facebook.com/stonemountainyogurt" target="_blank" rel="noreferrer">Facebook</a>
+              <a href="https://www.tiktok.com/@stonemountainyogurt" target="_blank" rel="noreferrer">TikTok</a>
+            </div>
+          </section>
+        </div>
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} Stone Mountain Yogurt</p>
+          <p>Made with care in Pennington Gap · Site by <a href="https://smithdigitals.com" target="_blank" rel="noreferrer">Smith Digitals</a></p>
+        </div>
+      </footer>
     </div>
   )
 }
