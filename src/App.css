@@ -2471,15 +2471,49 @@
   transform: none;
 }
 
+.flavor-ribbon > div {
+  width: 100%;
+  gap: 0;
+  animation: none;
+  transform: none;
+}
+
+.flavor-set {
+  width: 100%;
+  padding-inline: clamp(0.5rem, 2vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(0.3rem, 1vw, 1rem);
+}
+
+.flavor-set[aria-hidden='true'] {
+  display: none;
+}
+
+.flavor-item {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.3rem, 1vw, 1rem);
+}
+
+@keyframes ribbon-mobile-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 .flavor-ribbon span {
   font-family: var(--display);
-  font-size: 0.95rem;
+  font-size: clamp(0.5rem, 1.05vw, 0.95rem);
   font-style: normal;
+  white-space: nowrap;
   text-transform: uppercase;
 }
 
 .flavor-ribbon i {
+  flex: 0 0 auto;
   color: var(--forest);
+  font-size: clamp(0.55rem, 1vw, 0.9rem);
 }
 
 .split-feature {
@@ -3167,6 +3201,33 @@
 
   .treat-card {
     padding: 1.5rem;
+  }
+
+  .flavor-ribbon > div {
+    width: max-content;
+    animation: ribbon-mobile-scroll 22s linear infinite;
+    transform: translateX(0);
+  }
+
+  .flavor-set,
+  .flavor-set[aria-hidden='true'] {
+    width: max-content;
+    padding: 0 1.1rem 0 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.1rem;
+  }
+
+  .flavor-item {
+    gap: 1.1rem;
+  }
+
+  .flavor-ribbon span {
+    font-size: 0.78rem;
+  }
+
+  .flavor-ribbon i {
+    font-size: 0.72rem;
   }
 
   .split-photo::before {

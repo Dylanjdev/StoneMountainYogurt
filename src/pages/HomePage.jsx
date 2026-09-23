@@ -24,6 +24,15 @@ const treats = [
   },
 ]
 
+const flavorCategories = [
+  'Frozen yogurt',
+  'Milkshakes',
+  'Sundaes',
+  'Fruit smoothies',
+  'Waffle nachos',
+  'Banana splits',
+]
+
 function ArrowIcon() {
   return (
     <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -91,9 +100,16 @@ function HomePage() {
       </section>
 
       <div className="flavor-ribbon" aria-label="Popular menu categories">
-        <div>
-          <span>Frozen yogurt</span><i>✦</i><span>Milkshakes</span><i>✦</i><span>Sundaes</span><i>✦</i>
-          <span>Fruit smoothies</span><i>✦</i><span>Waffle nachos</span><i>✦</i><span>Banana splits</span><i>✦</i>
+        <div className="flavor-track">
+          {[false, true].map((isDuplicate) => (
+            <div className="flavor-set" aria-hidden={isDuplicate || undefined} key={String(isDuplicate)}>
+              {flavorCategories.map((category) => (
+                <span className="flavor-item" key={category}>
+                  <span>{category}</span><i aria-hidden="true">✦</i>
+                </span>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
 

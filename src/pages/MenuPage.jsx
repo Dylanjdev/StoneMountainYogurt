@@ -28,11 +28,13 @@ function MenuPage() {
               {card.price ? <p className="price-chip">{card.price}</p> : null}
             </div>
             <h3>{card.title}</h3>
-            <ul>
-              {card.details.map((detail) => (
-                <li key={detail}>{detail}</li>
-              ))}
-            </ul>
+            {card.details ? (
+              <ul>
+                {card.details.map((detail) => (
+                  <li key={detail}>{detail}</li>
+                ))}
+              </ul>
+            ) : null}
             {card.flavors ? (
               <div className="tag-cloud" aria-label={`${card.title} flavors`}>
                 {card.flavors.map((flavor) => (
